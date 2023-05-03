@@ -56,7 +56,7 @@ function operate(first, second, curOperator){
 }
 
 function numberClicked(e){
-    display.innerText += ` ${e.target.innerText}`;
+    displayValue += ` ${e.target.innerText}`;
     if(operator){
         if(!secondNumber){
             secondNumber = e.target.innerText;
@@ -68,7 +68,7 @@ function numberClicked(e){
             firstNumber = e.target.innerText;
         }else{
             if(isRestarting){
-                display.innerText = e.target.innerText;
+                displayValue = e.target.innerText;
                 answer = 0;
                 result.innerText = answer;
                 firstNumber = e.target.innerText;
@@ -78,10 +78,10 @@ function numberClicked(e){
             }
         }
     }
-    console.log(firstNumber, operator, secondNumber);
+    display.innerText = displayValue;
 }
 function operatorClicked(e){
-    display.innerText += ` ${e.target.innerText}`;
+    displayValue += ` ${e.target.innerText}`;
     if(!operator){
         operator = e.target.innerText;
     }else{
@@ -90,16 +90,17 @@ function operatorClicked(e){
         operator = e.target.innerText;
         isRestarting = false;
     }
-    console.log(firstNumber, operator, secondNumber);
+    display.innerText = displayValue;
 }
 function clear(){
     firstNumber = null;
     secondNumber = null;
     operator = null;
     answer = 0;
+    displayValue = "";
     isRestarting = false;
     hasDot = false;
-    display.innerText = "";
+    display.innerText = displayValue;
     result.innerText = answer;
 }
 function dotClicked(){
@@ -107,30 +108,30 @@ function dotClicked(){
         hasDot = true;
         if(operator){
             if(!secondNumber){
-                display.innerText += ` 0.`;
+                displayValue += ` 0.`;
                 secondNumber = '0.';
             }else{
-                display.innerText += ` .`;
+                displayValue += ` .`;
                 secondNumber += '.';
             }
         }else{
             if(!firstNumber){
-                display.innerText += `0.`;
+                displayValue += `0.`;
                 firstNumber = '0.';
             }else{
                 if(isRestarting){
-                    display.innerText += `0.`;
-                    display.innerText = '0.';
+                    displayValue = '0.';
                     answer = 0;
                     result.innerText = answer;
                     firstNumber = '0.';
                     isRestarting = false;
                 }else{
-                    display.innerText += ` .`;
+                    displayValue += ` .`;
                     firstNumber += '.';
                 }
             }
         }
+        display.innerText = displayValue;
     }
 }
 

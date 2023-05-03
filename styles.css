@@ -48,7 +48,7 @@ body{
 .double{
     flex: 2;
 }
-.number{
+.number, .dot{
     background-color:#2f3640;
     color: #f5f6fa;
 }
